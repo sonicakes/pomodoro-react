@@ -1,4 +1,5 @@
 import { useTimer } from 'react-timer-hook';
+import './timer.css';
 
 function Timer({ expiryTimestamp }) {
     const {
@@ -10,13 +11,14 @@ function Timer({ expiryTimestamp }) {
       resume,
       restart,
     } = useTimer({ expiryTimestamp, onExpire: () => console.warn('onExpire called - the timer has run its course'), autoStart: false });
-  
-  
+    const formatTime = (time) => {
+      return String(time).padStart(2, "0");
+    };
     return (
       <div style={{textAlign: 'center'}}>
         <h1>Pomodoro timer </h1>
-        <div style={{fontSize: '100px'}}>
-         <span>{minutes}</span>:<span>{seconds}</span>
+        <div className="timer">
+       <span>{formatTime(minutes)}</span>:<span>{formatTime(seconds)}</span>
         </div>
         <p>{isRunning ? 'Running' : 'Not running'}</p>
         <button onClick={start}>Start</button>
