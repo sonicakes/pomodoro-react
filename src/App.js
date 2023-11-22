@@ -1,29 +1,32 @@
-import Timer from "./components/timer/Timer";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
+import TimerWrapper from './components/timer-wrapper/TimerWrapper';
 
 
 function App() {
-  const time = new Date();
-  time.setSeconds(time.getSeconds() + 1500); // 25 minutes timer
+  const pomodoro = 'Pomodoro Session';
+  const shortbreak = 'Short Break';
+  const longbreak = 'Long Break';
+
+  
   return (
     <div className="App">
       <div>
         <Tabs>
   <TabList>
-    <Tab>Pomodoro Session</Tab>
-    <Tab>Two</Tab>
-    <Tab>Three</Tab>
+    <Tab>{pomodoro}</Tab>
+    <Tab>{shortbreak}</Tab>
+    <Tab>{longbreak}</Tab>
   </TabList>
 
   <TabPanels>
     <TabPanel>
-    <Timer expiryTimestamp={time}/>
+    <TimerWrapper type={pomodoro} />
     </TabPanel>
     <TabPanel>
-      <p>two!</p>
+    <TimerWrapper type={shortbreak} />
     </TabPanel>
     <TabPanel>
-      <p>three!</p>
+    <TimerWrapper type={longbreak} />
     </TabPanel>
   </TabPanels>
 </Tabs>
