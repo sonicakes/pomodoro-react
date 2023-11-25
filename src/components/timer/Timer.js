@@ -1,5 +1,6 @@
 import { useTimer } from "react-timer-hook";
 import "./timer.css";
+import { Button } from "@chakra-ui/react";
 
 function Timer({ expiryTimestamp, length, type }) {
   const { seconds, minutes, isRunning, start, pause, resume, restart } =
@@ -19,10 +20,17 @@ function Timer({ expiryTimestamp, length, type }) {
         <span>{formatTime(minutes)}</span>:<span>{formatTime(seconds)}</span>
       </div>
       <p>{isRunning ? "Running" : "Not running"}</p>
-      <button onClick={start}>Start</button>
-      <button onClick={pause}>Pause</button>
-      <button onClick={resume}>Resume</button>
-      <button
+      <Button colorScheme="blue" onClick={start}>
+        Start
+      </Button>
+      <Button colorScheme="blue" onClick={pause}>
+        Pause
+      </Button>
+      <Button colorScheme="blue" onClick={resume}>
+        Resume
+      </Button>
+      <Button
+        colorScheme="blue"
         onClick={() => {
           const time = new Date();
           time.setSeconds(time.getSeconds() + length);
@@ -30,7 +38,7 @@ function Timer({ expiryTimestamp, length, type }) {
         }}
       >
         Restart
-      </button>
+      </Button>
     </div>
   );
 }
