@@ -2,17 +2,21 @@ import { useTimer } from "react-timer-hook";
 import "./timer.css";
 import { Button } from "@chakra-ui/react";
 
+
+
 function Timer({ expiryTimestamp, length, type }) {
+
   const { seconds, minutes, isRunning, start, pause, resume, restart } =
     useTimer({
       expiryTimestamp,
       onExpire: () =>
-        console.warn("onExpire called - the timer has run its course"),
+        console.log("onExpire called - the timer has run its course", 'alarm'),
       autoStart: false,
     });
   const formatTime = (time) => {
     return String(time).padStart(2, "0");
   };
+ 
   return (
     <div style={{ textAlign: "center" }}>
       <h1>{type}</h1>

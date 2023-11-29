@@ -2,6 +2,8 @@ import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
 import TimerWrapper from './components/timer-wrapper/TimerWrapper';
 import Customize from './components/form/Customize';
 import { useState } from 'react';
+import ApiCall from './components/data/apiCall';
+import Alarm from './components/sound/Alarm';
 
 
 function App() {
@@ -9,8 +11,8 @@ function App() {
   const shortbreak = 'Short Break';
   const longbreak = 'Long Break';
 
-  const [customTime, setCustomTime] = useState(7);
-  console.log(customTime, 'customtime after')
+  
+  
 
   return (
     <div className="App">
@@ -26,6 +28,8 @@ function App() {
     <TabPanel>
     <TimerWrapper type={pomodoro} />
     <Customize />
+    <ApiCall />
+    <Alarm />
     </TabPanel>
     <TabPanel>
     <TimerWrapper type={shortbreak} />
